@@ -220,3 +220,4 @@ __marimo__/
 settings.json
 catboost_training.json
 events.out.tfevents
+.artifacts 
