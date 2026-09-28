@@ -220,4 +220,9 @@ __marimo__/
 settings.json
 catboost_training.json
 events.out.tfevents
-.artifacts 
+.artifacts/ 
+artifacts/
+logs/
+catboost_info/
+__pycache__/
+*.pkl
