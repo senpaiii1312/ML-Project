@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Performance Predictor</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        text-align: center;
+      }
+
+      .home {
+        background: rgba(255, 255, 255, 0.12);
+        padding: 50px 60px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        font-size: 38px;
+        margin-bottom: 12px;
+      }
+
+      p {
+        color: #eee;
+        margin-bottom: 30px;
+      }
+
+      a {
+        display: inline-block;
+        padding: 13px 28px;
+        background: white;
+        color: #5b5bd6;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="home">
+      <h1>🎓 Student Performance Predictor</h1>
+      <p>Predict student mathematics performance using academic data.</p>
+      <a href="{{ url_for('predict_datapoint') }}">Get Started →</a>
+    </div>
+  </body>
+</html>
