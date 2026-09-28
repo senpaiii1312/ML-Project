@@ -1,5 +1,13 @@
-import os 
+import os
 import sys
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+sys.path.insert(0, PROJECT_ROOT)
+os.chdir(PROJECT_ROOT)
+
+print("RUNNING FILE:", os.path.abspath(__file__))
+print("PROJECT ROOT:", PROJECT_ROOT)
+
 from src.exception import CustomException
 from src.logger import logging
 import pandas as pd
@@ -8,11 +16,14 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
 
+from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerConfig
+
 @dataclass
 class DataIngestionConfig:
-    train_data_path: str=os.path.join('artifacts',"train.csv")
-    test_data_path: str=os.path.join('artifacts',"test.csv")
-    raw_data_path: str=os.path.join('artifacts',"data.csv")
+    train_data_path: str = os.path.join(PROJECT_ROOT, 'artifacts', "train.csv")
+    test_data_path: str = os.path.join(PROJECT_ROOT, 'artifacts', "test.csv")
+    raw_data_path: str = os.path.join(PROJECT_ROOT, 'artifacts', "data.csv")
 
 class DataIngestion:
     def __init__(self):
@@ -48,4 +59,7 @@ if __name__=="__main__":
     train_data, test_data = obj.initiate_data_ingestion()
 
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_data, test_data)
+    train_arr, test_arr, preprocessor_path = data_transformation.initiate_data_transformation(train_data, test_data)
+
+    modeltrainer = ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr, test_arr, preprocessor_path ))
